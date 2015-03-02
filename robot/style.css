@@ -49,6 +49,23 @@ table {
 
 /* END OF RESET - Start of Your CSS*/
 
+@-webkit-keyframes shake {
+  0%, 100% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+            transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+            transform: translate3d(10px, 0, 0);
+  }
+}
+
 
 @-webkit-keyframes wobble {
   0% {
@@ -86,7 +103,7 @@ table {
 
 
 body{
-    background-image: url("dance.gif");
+    background-image:url(dance.gif);
 }
 
 div {
@@ -96,6 +113,7 @@ div {
 	position:absolute;
 	top:50px;
 	left:50px;
+	-webkit-animation:wobble 6s linear infinite;
 }
 
 .face{
@@ -136,6 +154,7 @@ div {
 	left:15%;
 	top:20%;
 	
+	
 } 
 
 .eye2{
@@ -156,17 +175,19 @@ div {
 .secondpart{
     height:20px;
     width:40px;
-    border-radius: 40px 40px 0 0;
-    -moz-border-radius: 40px 40px 0 0;
-    -webkit-border-radius: 40px 40px 0 0;
+    border-radius: 0 0 40px 40px;
+    -moz-border-radius: 0 0 40px 40px;
+    -webkit-border-radius: 0 0 40px 40px;
     background:orange;
+	
+	position:absolute;
+	bottom:-20px;
+	left:-10px;
+	z-index:100;
+	-webkit-animation:shake 2s linear infinite;
 	-ms-transform: rotate(180deg); /* IE 9 */
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
 	transform: rotate(180deg);
-	position:absolute;
-	bottom:-15px;
-	left:-10px;
-	z-index:100;
 	
 } 
 
@@ -480,5 +501,33 @@ transform:scale(0.5,2);}
 
 .ear2:hover{
 transform:scale(0.5,2);}
+
+h1{
+	text-align:center;
+	font-family:helvetica;
+	font-size:3em;
+	margin-top:20px;
+	color:white;
+}
+
+.leg2:hover .shin2
+{
+    -webkit-transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
+    -o-transform:rotate(360deg);
+}  
+
+.leg:hover .shin
+{
+    -webkit-transform:rotate(-360deg);
+    -moz-transform:rotate(-360deg);
+    -o-transform:rotate(-360deg);
+}  
+
+iframe{
+	position:fixed;
+	bottom:0px;
+	right:0px;
+}
 
 
