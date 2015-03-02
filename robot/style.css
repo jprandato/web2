@@ -137,6 +137,7 @@ div {
 	position:absolute;
 	left:45%;
 	top:40%;
+	z-index:100;
 } 
 
 .eye1{
@@ -529,5 +530,15 @@ iframe{
 	bottom:0px;
 	right:0px;
 }
+
+.face:hover .teeth {
+transform:scale(0.75,4);}
+
+.face:hover .teeth1 {
+transform:scale(0.75,4);}
+
+.face:hover .teeth2 {
+transform:scale(0.75,4);}
+
 
 
