@@ -1,0 +1,52 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>First Page</title>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+</head>
+<body>
+
+	<script src='http://cykod.github.io/Logoish/logoish.js'></script>
+	<script>
+	Logoish.init();
+
+	speed(0);
+
+	lineWidth(1)
+
+
+
+	for(var r = 0; r < 300; r++) {
+	  for(var c =  0;  c < 60; c++) {
+	    lineWidth(5);
+	    lineColor("black")
+	    moveTo(r*10,0);
+	    angle(170);
+	    forward(100);
+	    rotate(30);
+	    forward(100);
+	    rotate(30);
+	    forward(100);
+	    rotate(20);
+	    forward(100);
+	    rotate(-20);
+	    forward(100);
+	    rotate(-30);
+	    forward(100);
+	    rotate(-30);
+	    forward(100);
+  
+  
+	    lineWidth(1);
+	    lineColor("white")
+	    moveTo(0,r*10);
+	    angle(45);
+	    forward(3000);
+	  }
+	}
+	</script>
+	</body></html>

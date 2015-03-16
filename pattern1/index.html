@@ -1,0 +1,35 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>First Page</title>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+</head>
+<body>
+
+	<script src='http://cykod.github.io/Logoish/logoish.js'></script>
+	<script>
+	Logoish.init();
+
+	speed(0);
+
+	lineWidth(2)
+
+	function segment(size) {
+	  rotate(90);
+	  forward(size);
+	  rotate(-120);
+	  forward(size*6);
+	  rotate(-120);
+	  forward(size);
+	}
+
+	for(var x = 0;x < 1000; x++){ 
+	  segment(x);  
+	}
+
+	</script>
+	</body></html>
