@@ -84,7 +84,4 @@ $(".centered").on("rearriving",function(e) {
   $(this).addClass("moveDown");
 });
 
-$(".scrolling").scrollFlight();
-$(".centered").on("redeparting",function(e) {
-  $(this).removeClass("moveDown");
-});
+
