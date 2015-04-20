@@ -1,0 +1,121 @@
+<!--
+============================================================
+Capturing The Mouse Position in IE4-6 & NS4-6
+(C) 2000 www.CodeLifter.com
+Free for all users, but leave in this  header
+//-->
+
+<html>
+<body>
+<a id="logo" href="#"></a>	
+<title>My first project</title>
+<meta charset="utf-8">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="snap.svg.js"></script>
+        <link rel="stylesheet" href"style.css" type="text/css" media="screen"/>
+        
+<script language="JavaScript1.2">
+		var paths = {
+		    head : 'M0,0v72h58.5v54c0,0-40.5,0-45,0S9,121.5,9,121.5v-36H0V135h67.5V63H9V9h49.5v40.5h9V0H0z',
+			blob : 'M0,0v81h58.5v27c0,0-40.5,0-45,0S9,103.5,9,103.5v-18H0V135h67.5V54H9V27h49.5v22.5h9V0H0z',
+		    more : 'M0,0v81h36v27h-0.8c-3.7,0-3.7-4.4-3.7-4.4V85.5H0V135h67.5V54h-36V27H36v22.5h31.5V0H0z',
+			yew  :  'M144,0v126c0,0-40.5,0-45,0s-4.5-4.5-4.5-4.5V0h-9v135H153V0H144z',
+		    yewtwo : 'M121.5,0v108c0,0,4.5,0,0,0s-4.5-4.5-4.5-4.5V0H85.5v135H153V0H121.5z'
+		    };
+			
+			var svg = $('<svg xmlns="http://www.w3.org/2000/svg" >').css({ 
+			    width: '200px', 
+			    height: '200px' 
+			});
+
+			$('#logo').append( svg );
+ 
+
+			var paper = Snap( svg[0] );
+ 
+
+			var parts = {};
+			parts.head = paper.path( paths.head );
+			parts.yew = paper.path( paths.yew );
+
+			
+
+		
+
+// Detect if the browser is IE or not.
+// If it is not IE, we assume that the browser is NS.
+var IE = document.all?true:false
+
+// If NS -- that is, !IE -- then set up for mouse capture
+if (!IE) document.captureEvents(Event.MOUSEMOVE)
+
+// Set-up to use getMouseXY function onMouseMove
+document.onmousemove = getMouseXY;
+
+// Temporary variables to hold mouse x-y pos.s
+var tempX = 0
+var tempY = 0
+
+// Main function to retrieve mouse x-y pos.s
+
+function getMouseXY(e) {
+  if (IE) { // grab the x-y pos.s if browser is IE
+    tempX = event.clientX + document.body.scrollLeft
+    tempY = event.clientY + document.body.scrollTop
+  } else {  // grab the x-y pos.s if browser is NS
+    tempX = e.pageX
+    tempY = e.pageY
+  }  
+  // catch possible negative values in NS4
+  if (tempX < 0){tempX = 0}
+  if (tempY < 0){tempY = 0}  
+  // show the position values in the form named Show
+  // in the text fields named MouseX and MouseY
+  if(tempX<100){
+      parts.head.animate({
+          path : paths.more
+      }, 1000, mina.elastic );
+      parts.yew.animate({
+          path : paths.yew
+      }, 1000, mina.elastic );
+  }
+  else if(tempX<200){
+      parts.head.animate({
+          path : paths.blob
+      }, 1000, mina.elastic );
+      parts.yew.animate({
+          path : paths.yewtwo
+      }, 1000, mina.elastic );
+  }
+  else if(tempX<300){
+      parts.head.animate({
+          path : paths.head
+      }, 1000, mina.elastic );
+      parts.yew.animate({
+          path : paths.yew
+      }, 1000, mina.elastic );
+  }
+  else if(tempX<400){
+     console.log("4")
+  }
+  else if(tempX<500){
+	  console.log("5")
+  }
+  else if(tempX<600){
+	  console.log("6")
+  }
+  else if(tempX<700){
+	  console.log("7")
+  }
+  else {  
+     console.log("8")
+    }  
+ 
+  
+  return true
+}
+
+//-->
+</script>
+</body>
+</html>
