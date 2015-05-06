@@ -1,0 +1,189 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* END OF RESET - Start of Your CSS*/
+* { box-sizing: border-box;}
+
+body {
+  font-family:'Montserrat', sans-serif;
+  background-image:url("subtle_dots2.png");
+  font-size:1.5em;
+}
+
+.collection {
+}
+
+* { padding:0px; margin:0px;}
+
+#filter-bar-wrapper {
+  height:60px;
+}
+
+#filter-bar {
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  background-image:url("subtle_dots.png");
+  text-align:right;
+  padding-right:30px;
+  height:60px;
+  padding-top:10px;
+  z-index:2;
+}
+
+.category {
+  background-color: rgba(255,255,255,0);
+  padding:5px;
+  margin:2px;
+  border:0px;
+  outline: none;
+  
+  
+}
+
+.category.selected {
+  background-color: rgba(255,155,255,0);
+  border-bottom:1px solid black;
+  outline: none;
+  font-weight:700;
+  
+}
+
+#search  {
+  padding:5px;
+  border:0px;
+  background-color: rgba(255,255,255,.5);
+  outline: black;
+}
+
+.item {
+  width: 25%;
+  list-style-type:none;
+  padding:0px;
+  float:left;
+  cursor:pointer;
+  overflow:hidden;
+}
+
+.item img{
+ width:100%;
+}
+
+
+.purple {
+  background-color:purple;
+}
+
+.item-big { width: 25%px; }
+
+
+.overlay {
+  position:fixed;
+  height:100%;
+  width:100%;
+  left:0;
+  top:0;
+  background-color:rgba(0,0,0,0.8);
+  z-index: 3;
+  display:none;
+  margin-top:60px;
+}
+
+
+.modal {
+  width: 50%;
+  position: fixed;
+  top: 15%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  background-image:url("subtle_dots.png");
+  padding:20px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+  z-index:4;
+  display:none;
+  max-height:90%;
+  overflow:auto;
+}
+
+.modal img { width:60%; }
+
+h1{
+	font-weight:700;
+	font-size:1.3em;
+	margin-top:.3em;
+}
+
+h2{
+	margin-top:.7em;
+	margin-bottom:.7em;
+}
+.name{
+	display:none;
+}
+
+.description{
+	margin-top:.3em;
+	font-size:.6em;
+}
+
+.item img:hover{
+	opacity:.7;
+}
+
+.title1{
+    text-align:left;
+	padding-left:15px;
+	position:absolute;
+	margin-top:5px;
+	font-weight:700;
+	
+}
+

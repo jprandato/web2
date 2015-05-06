@@ -1,0 +1,146 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Collection Example</title>
+  <script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
+  <script src='http://cykod.github.io/Collection.js/packery.pkgd.min.js'></script>
+  <script src='http://cykod.github.io/Collection.js/tabletop.js'></script>
+  <script src='http://cykod.github.io/Collection.js/collection.js'></script>
+  <script src='imagesloaded.pkgd.js'></script>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link type='text/css' rel='stylesheet' href='style.css' />
+</head>
+<body>
+
+<div id='filter-bar-wrapper'>
+  <div id='filter-bar'>
+	 <p class="title1">My Vinyl Collection</p> 
+    <input type='text' id='search' placeholder='search'/>
+    <button data-category=""      class='category selected' id="all-button">All</button>
+    <button data-category="Rap"  class='category'>Rap</button>
+    <button data-category="Indie"   class='category'>Indie</button>
+	 <button data-category="Rock"   class='category'>Rock</button>
+	<button data-category="Electronic"   class='category'>Electronic</button> 
+	<button data-category="Jazz"   class='category'>Jazz</button> 
+	<button data-category="Soul"   class='category'>Soul</button> 
+	<button data-category="Pop"   class='category'>Pop</button> 
+  </div>
+</div>
+
+<ul class='collection'>
+ 
+
+
+</ul>
+<div class='overlay'></div>
+<div class='modal'></div>
+<script>
+
+
+function showModal(item) {
+	$(".modal").empty();//empties modal
+   
+	var $h1 = $("<h1>").text(item.Name);//opens a header with the name of the object
+	var $h2 = $("<h2>").text(item.Band+" || "+item.Year+" || "+item.Color);
+	var $img = $("<img>").attr("src",item.Image);//opens the image with the img src
+	var $p = $("<p class='description'>").text("This Album has been listened to "+item.Description+" times Since May 4th 2015");//opens a paragraph with the description
+
+	$(".modal").append($h1,$h2,$img,$p);//puts all above data into modal div
+   
+	$(".overlay").show();//shows gray
+	$(".modal").show();// shows modal div
+
+}
+
+function hideModal() {//hides the modal
+  $(".overlay").hide();
+  $(".modal").hide();
+}
+
+function addItem(item) {//adds the item to the page
+	var $li = $("<div>").addClass("item")//opens an li with a class of item and a class of whatever th color in the spreadshhet is
+
+	
+	$li.attr("data-category",item.Color);//gives an attribute to the li for searching function later
+
+	//opens an h2 with a class of name and fills it with name from spreadsheet
+	var $img = $("<img>").attr("src",item.Image);
+	var $h2 = $("<h2 class='name'>").text(item.Name);
+  
+
+  $li.append($img,$h2)//closes those up
+
+  $li.on("click",function(e) {
+      showModal(item);//makes it so modal shows up on click
+  });
+
+  $(".collection").append($li);//closes the whole li and places it in ul with a class of collection
+};
+
+function addItems(data) {
+  for(var i=0;i<data.length;i++) {
+    addItem(data[i]);
+  }
+}//runs a loop so it goes through the whole data list
+
+
+function callback(data) { //packery stuff
+  addItems(data);
+  
+ 
+
+  var $container = $('.collection');
+ 
+  
+  $container.imagesLoaded( function() {
+	  $container.packery({
+	    itemSelector: '.item',
+	    gutter: 0
+	
+	  });
+  });
+
+  var myCollection = $(".item").collection({
+    filters: { 
+      "title": "h2",
+      "category": "[data-category]"
+    },
+
+    update: function() { 
+      $container.packery(); 
+      setTimeout(function() { $container.packery()},600);
+    },
+    hide: function($elem) { $elem.hide(); },
+    show: function($elem) { $elem.fadeIn(500); },
+  });
+
+  $(".category").on("click",function(e) {
+      var category = $(this).data("category");
+      $("#filter-bar button").removeClass("selected");
+      $(this).addClass("selected");
+      myCollection.filtered("category",category);
+  });
+
+  $("#search").on("change keyup",function(e) {
+      myCollection.filtered("title", $(this).val());
+  });
+
+  $(".overlay").on("click",function(e) {
+      hideModal();
+  });
+
+}
+
+
+  Tabletop.init( { key: "https://docs.google.com/spreadsheets/d/1079J_sODyL2h31uXFy2djTPMlTw_ysd7bng9k5GoQNI/pubhtml",
+                   callback: callback,
+                   simpleSheet: true } )
+ 
+
+
+</script>
+	
+</body>
+</html>
